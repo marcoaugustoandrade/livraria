@@ -2,13 +2,13 @@ drop if exists db_livros;
 create database db_livros;
 use db_livros;
 
-create table editora(
+create table editoras(
   id      int           not null    auto_increment,
   nome    varchar(200)  not null,
   primary key(id)
 );
 
-create table usuário(
+create table usuarios(
   id      int           not null    auto_increment,
   nome    varchar(200)  not null,
   email   varchar(200)  not null,
@@ -17,7 +17,7 @@ create table usuário(
   primary key(id)
 );
 
-create table livro(
+create table livros(
   id          int           not null    auto_increment,
   titulo      varchar(200)  not null,
   descricao   text          not null,
@@ -26,10 +26,10 @@ create table livro(
   autores     json,
   editora_id  int           not null,
   primary key(id),
-  foreign key(editora_id) references editora(id)
+  foreign key(editora_id) references editora(sid)
 );
 
-insert into editora (nome) values
+insert into editorsa (nome) values
   ('Novatec'),
   ('Pearson'),
   ('Casa do Código');
@@ -41,7 +41,7 @@ insert into autor (nome) values
   ('Luciano Ramalho'),
   ('Felipe Cruz');
   
-insert into livro (titulo, descricao, publicacao, ISBN, autores, editora_id) values
+insert into livros (titulo, descricao, publicacao, ISBN, autores, editora_id) values
   ('Introdução à Programação com Python', '...', '2014-06-17', '978-8575224083', '{"autores": ["Nilo Ney Coutinho Menezes"]}', 1),
   
   ('Python Para Análise de Dados: Tratamento de Dados com Pandas, NumPy e IPython', '...', '2018-01-07', '978-8575226476', '{"autores": ["Wes McKinney", "Lúcia A. Kinoshitas"]}', 1),
